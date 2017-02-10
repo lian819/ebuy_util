@@ -15,30 +15,130 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
 
+        <!-- Commons Email -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
             <version>1.4</version>
         </dependency>
-        <!-- commons-eami的依赖jar包 -->
+
+        <!-- Javax Mail -->
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
             <version>1.5.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+        <!-- Zxing -->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
             <version>3.2.0</version>
         </dependency>
+
+        <!-- Jedis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+        <!-- Commons Logging -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <!-- Httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
+        <!--  -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-cache</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
+        <!-- Httpcore -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.3</version>
+        </dependency>
+
+        <!-- Httpmime -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.1</version>
+        </dependency>
+
+        <!-- Json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160212</version>
+        </dependency>
+
+        <!-- Log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+
+
+        <!-- CollectionCommon -->
+        <dependency>
+            <groupId>com.ebuy.basic</groupId>
+            <artifactId>CollectionCommon</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- EasyHttpClient -->
+        <dependency>
+            <groupId>com.ebuy.basic</groupId>
+            <artifactId>EasyHttpClient</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- MetoXML -->
+        <dependency>
+            <groupId>com.ebuy.basic</groupId>
+            <artifactId>MetoXML</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ebuy.basic</groupId>
+            <artifactId>SalamaCloudDataServiceUtil</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ebuy.basic</groupId>
+            <artifactId>SalamaReflect</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ebuy.basic</groupId>
+            <artifactId>easy-crypto-util</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 </project>
