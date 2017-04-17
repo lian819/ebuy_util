@@ -16,11 +16,33 @@
 
     <dependencies>
 
+        <!-- Poi -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.9</version>
+        </dependency>
+
+        <!-- Poi ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.9</version>
+        </dependency>
+
+
         <!-- Commons Email -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
             <version>1.4</version>
+        </dependency>
+
+        <!-- Commons codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
         </dependency>
 
         <!-- Javax Mail -->
@@ -93,6 +115,18 @@
             <version>1.2.16</version>
         </dependency>
 
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
 
         <!-- CollectionCommon -->
         <dependency>
@@ -123,12 +157,6 @@
 
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.ebuy.basic</groupId>
             <artifactId>SalamaReflect</artifactId>
             <version>1.0</version>
@@ -137,6 +165,12 @@
         <dependency>
             <groupId>com.ebuy.basic</groupId>
             <artifactId>easy-crypto-util</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ebuy.basic</groupId>
+            <artifactId>SalamaServiceCore</artifactId>
             <version>1.0</version>
         </dependency>
 
