@@ -1,6 +1,7 @@
 package com.ebuy.util.test;
 
-import com.ebuy.util.util.hex.HexUtil;
+
+import com.beef.util.HexUtil;
 
 /**
  * $

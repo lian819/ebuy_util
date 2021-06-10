@@ -1,6 +1,5 @@
 package com.ebuy.util.util;
 
-import com.ebuy.util.service.QrcodeService;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -57,7 +56,7 @@ public class CreatQRCodeImg {
 		gs.dispose();
 		img.flush();
 		if(!ImageIO.write(image, format, file)){
-			throw new IOException("Could not write an image of format " + format + " to " + file);
+			throw new IOException("Could not write an ebuy of format " + format + " to " + file);
 		}
 	}
 

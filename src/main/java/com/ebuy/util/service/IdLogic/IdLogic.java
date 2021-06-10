@@ -1,6 +1,8 @@
 package com.ebuy.util.service.IdLogic;
 
 import com.beef.util.HexUtil;
+import com.sun.mail.imap.protocol.ID;
+import org.apache.log4j.Logger;
 
 import java.util.GregorianCalendar;
 import java.util.Locale;
@@ -13,6 +15,8 @@ import java.util.Locale;
  * @since 1.0
  */
 public class IdLogic {
+
+	private static Logger logger = Logger.getLogger(IdLogic.class);
 
 	private final Object _lockForUserId = new Object();
 	private int _serverNum = 0;
@@ -34,6 +38,7 @@ public class IdLogic {
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
+				logger.error("IdLogic getNewDataID exception!");
 			}
 
 			return HexUtil.toHexString(dataId);
@@ -41,14 +46,14 @@ public class IdLogic {
 	}
 
 	public static void main(String[] args) {
-//		String newId = new IdLogic(100).getNewDataID();
-//		System.out.println(newId);
+		String newId = new IdLogic(100).getNewDataID();
+		System.out.println(newId);
 
 		// 左移运算符, 相当于乘以2^48
-//		long num1 = 100L << 48;
-//		long num2 = num1 & 0xFFFF000000000000L;
-//		System.out.println("num1: " + num1);
-//		System.out.println("num2: " + num2);
+		long num1 = 1L << 48;
+		long num2 = num1 & 0xFFFF000000000000L;
+		System.out.println("num1: " + num1);
+		System.out.println("num2: " + num2);
 //
 //		GregorianCalendar userZeroCal = new GregorianCalendar(Locale.CHINA);
 //		userZeroCal.set(2013, 0, 1, 0, 0, 0);
@@ -63,12 +68,14 @@ public class IdLogic {
 
 
 		//
-		System.out.println(0xff >>> 7);
-		System.out.println(1<<3);
-		System.out.println(Integer.toBinaryString(255));
-
-		System.out.println((((byte) 0xff) >>> 7));
+//		System.out.println(0xff >>> 7);
+//		System.out.println(1<<3);
+//		System.out.println(Integer.toBinaryString(255));
+//
+//		System.out.println((((byte) 0xff) >>> 7));
 //
 //		System.out.println((byte) (((byte) 0xff) >>> 7));
+
+//		System.out.println(System.currentTimeMillis());
 	}
 }

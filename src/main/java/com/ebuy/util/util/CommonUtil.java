@@ -1,11 +1,11 @@
 package com.ebuy.util.util;
 
 import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -129,7 +129,6 @@ public class CommonUtil {
 	/**
 	 * 将时间字符串按提供的格式转换为字符串
 	 *
-	 * @param argStrDate
 	 * @return
 	 */
 	public static String formatStrDate(String strDate, String strOldFormat, String strNewFormat) {
@@ -152,7 +151,6 @@ public class CommonUtil {
 	/**
 	 * 将时间字符串按提供的格式转换为字符串
 	 *
-	 * @param argStrDate
 	 * @return
 	 */
 	public static long getLongDate(String strDate, String strFormat) {
@@ -175,7 +173,6 @@ public class CommonUtil {
 	/**
 	 * 将时间字符串按提供的格式转换为字符串
 	 *
-	 * @param argStrDate
 	 * @return
 	 */
 	public static String formatLongDate(long lngDate, String strFormat) {
@@ -197,7 +194,6 @@ public class CommonUtil {
 	/**
 	 * 将时间字符串按提供的格式转换为字符串
 	 *
-	 * @param argStrDate
 	 * @return
 	 */
 	public static String getMonday(long lngDate, String strFormat) {
@@ -270,5 +266,64 @@ public class CommonUtil {
 		}
 	}
 
+	public static String getKeySortDataString(Map<String, String> paramMap, String tokenString) {
+		List<String> keys = new ArrayList<String>(paramMap.keySet());
+		Collections.sort(keys);
 
+		StringBuilder sb = new StringBuilder();
+
+		String key, value;
+		for (int i = 0; i < keys.size(); i++) {
+			key = keys.get(i);
+			value = nullToEmpty(paramMap.get(key));
+
+			if(isNullOrEmpty(value)) {
+				continue;
+			}
+
+			if (sb.length() == 0) {
+				sb.append(key + "=" + value);
+			} else {
+				sb.append("&" + key + "=" + value);
+			}
+		}
+		if (sb.length() > 0) {
+			sb.append("&");
+		}
+		sb.append(tokenString);
+		//append
+		return sb.toString();
+	}
+
+	public static String toMD5(String origin) {
+		String resultString = null;
+		try {
+			resultString = new String(origin);
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			resultString = byteArrayToHexString(md.digest(resultString
+					.getBytes()));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return resultString;
+	}
+
+	private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
+
+	private static String byteArrayToHexString(byte[] b) {
+		StringBuffer resultSb = new StringBuffer();
+		for (int i = 0; i < b.length; i++) {
+			resultSb.append(byteToHexString(b[i]));
+		}
+		return resultSb.toString();
+	}
+
+	private static String byteToHexString(byte b) {
+		int n = b;
+		if (n < 0)
+			n = 256 + n;
+		int d1 = n / 16;
+		int d2 = n % 16;
+		return hexDigits[d1] + hexDigits[d2];
+	}
 }

@@ -1,6 +1,5 @@
 package com.ebuy.util.util;
 
-import com.ebuy.util.service.QrcodeService;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
@@ -38,16 +37,16 @@ public class ImgUtil {
 			resizedImage = i.getScaledInstance((newWidth * iWidth) / iHeight, newWidth, Image.SCALE_SMOOTH);
 		}
 
-		// This code ensures that all the pixels in the image are loaded.
+		// This code ensures that all the pixels in the ebuy are loaded.
 		Image temp = new ImageIcon(resizedImage).getImage();
 
-		// Create the buffered image.
+		// Create the buffered ebuy.
 		BufferedImage bufferedImage = new BufferedImage(temp.getWidth(null), temp.getHeight(null), BufferedImage.TYPE_INT_RGB);
 
-		// Copy image to buffered image.
+		// Copy ebuy to buffered ebuy.
 		Graphics g = bufferedImage.createGraphics();
 
-		// Clear background and paint the image.
+		// Clear background and paint the ebuy.
 		g.setColor(Color.white);
 		g.fillRect(0, 0, temp.getWidth(null), temp.getHeight(null));
 		g.drawImage(temp, 0, 0, null);
@@ -63,7 +62,7 @@ public class ImgUtil {
 		// Write the jpeg to a file.
 		FileOutputStream out = new FileOutputStream(resizedFile);
 
-		// Encodes image as a JPEG data stream
+		// Encodes ebuy as a JPEG data stream
 		JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
 
 		JPEGEncodeParam param = encoder .getDefaultJPEGEncodeParam(bufferedImage);

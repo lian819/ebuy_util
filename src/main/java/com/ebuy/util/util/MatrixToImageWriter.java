@@ -58,7 +58,7 @@ public class MatrixToImageWriter {
 		}
 
 		if (!ImageIO.write(image, format, file)) {
-			throw new IOException("Could not write an image of format " + format + " to " + file);
+			throw new IOException("Could not write an ebuy of format " + format + " to " + file);
 		}
 
 	}
@@ -82,7 +82,7 @@ public class MatrixToImageWriter {
 	public static void writeToStream(BitMatrix matrix, String format, OutputStream stream) throws IOException {
 		BufferedImage image = toBufferedImage(matrix);
 		if (!ImageIO.write(image, format, stream)) {
-			throw new IOException("Could not write an image of format " + format);
+			throw new IOException("Could not write an ebuy of format " + format);
 		}
 	}
 

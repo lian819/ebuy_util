@@ -1,17 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ebuy</groupId>
+    <parent>
+        <groupId>com.daily.code</groupId>
+        <artifactId>daily_code</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>ebuy_util</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>util</name>
-    <url>http://maven.apache.org</url>
-
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.home>/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home</java.home>
     </properties>
 
     <dependencies>
@@ -30,7 +32,6 @@
             <version>3.9</version>
         </dependency>
 
-
         <!-- Commons Email -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -39,10 +40,27 @@
         </dependency>
 
         <!-- Commons codec -->
+        <!-- org.apache.commons.codec.digest.DigestUtils -->
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>1.10</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+        <!-- org.apache.commons.lang.StringEscapeUtils -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream -->
+        <!-- com.thoughtworks.xstream.core.util.Base64Encoder -->
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.4.9</version>
         </dependency>
 
         <!-- Javax Mail -->
@@ -80,7 +98,7 @@
             <version>4.5.1</version>
         </dependency>
 
-        <!--  -->
+        <!-- Httpclient Cache -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient-cache</artifactId>
@@ -112,13 +130,12 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -136,10 +153,16 @@
         </dependency>
 
         <!-- EasyHttpClient -->
+        <!--<dependency>-->
+            <!--<groupId>com.ebuy.basic</groupId>-->
+            <!--<artifactId>EasyHttpClient</artifactId>-->
+            <!--<version>1.0</version>-->
+        <!--</dependency>-->
+
         <dependency>
-            <groupId>com.ebuy.basic</groupId>
+            <groupId>com.salama</groupId>
             <artifactId>EasyHttpClient</artifactId>
-            <version>1.0</version>
+            <version>1.2.4</version>
         </dependency>
 
         <!-- MetoXML -->
@@ -174,5 +197,74 @@
             <version>1.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15 -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15</artifactId>
+            <version>1.46</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.76</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.ws.commons.axiom/axiom-api -->
+        <dependency>
+            <groupId>org.apache.ws.commons.axiom</groupId>
+            <artifactId>axiom-api</artifactId>
+            <version>1.2.22</version>
+        </dependency>
+
+        <dependency>
+            <groupId>apiplatform.util</groupId>
+            <artifactId>apiplatform-util-base</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.w3c.jigsaw/jigsaw -->
+        <dependency>
+            <groupId>org.w3c.jigsaw</groupId>
+            <artifactId>jigsaw</artifactId>
+            <version>2.2.6</version>
+        </dependency>
+
+
+
     </dependencies>
+
+    <!--
+        程序包com.sun.ebuy.codec.jpeg不存在
+        这个类文件的位置在jre/lib/rt.jar
+        而我们设置的java_home下面的lib/dt.jar中没有这个文件，导致编译失败
+        通过配置maven-compiler-plugin插件可以解决此问题。
+
+        详情请看: https://www.cnblogs.com/sagech/p/5025412.html
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArguments>
+                        <verbose/>
+                        <!-- 下面${JAVA_1_8_HOME}和${JAVA_HOME}对应的位置是同一个. 一个是在maven配置文件里配置, 一个是是全局配置  -->
+                        <bootclasspath>${JAVA_1_8_HOME}/jre/lib/rt.jar:${JAVA_1_8_HOME}/jre/lib/jce.jar</bootclasspath>
+                        <!--<bootclasspath>${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/jre/lib/jce.jar</bootclasspath>-->
+                    </compilerArguments>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
